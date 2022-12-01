@@ -1,3 +1,5 @@
+import os
+
 import requests
 from pathlib import Path
 import json
@@ -33,6 +35,8 @@ class DailyInput:
             session_cookie = json.load(file)
         r = requests.get(url, allow_redirects=True, cookies=session_cookie)
         if r.ok:
+            if not self.cache_path.exists():
+                os.makedirs(self.cache_path)
             with open(self.filename, 'w') as file:
                 file.write(r.text)
             return r.text
