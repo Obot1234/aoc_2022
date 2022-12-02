@@ -1,10 +1,9 @@
+import json
 import os
+from pathlib import Path
 from typing import TypeVar
-from collections.abc import Sequence
 
 import requests
-from pathlib import Path
-import json
 
 from inputs.converter import Converter
 
