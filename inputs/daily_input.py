@@ -1,10 +1,14 @@
 import os
+from typing import TypeVar
+from collections.abc import Sequence
 
 import requests
 from pathlib import Path
 import json
 
 from inputs.converter import Converter
+
+T = TypeVar('T')
 
 
 class DailyInput:
@@ -16,10 +20,10 @@ class DailyInput:
         self.day = day
         self.filename = self.cache_path / f"day{day}.txt"
 
-    def convert(self, converter: Converter):
-        return converter.convert(self.__get())
+    def convert(self, converter: Converter[T]) -> T:
+        return converter.convert(self.get())
 
-    def __get(self) -> [str]:
+    def get(self) -> [str]:
         if self.filename.exists():
             return self.__get_from_file().splitlines()
         else:
