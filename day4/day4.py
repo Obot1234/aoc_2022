@@ -3,7 +3,7 @@ from inputs.converter import ListConverter
 from section_assignment import SectionAssignment
 
 
-class Day4(Day):
+class Today(Day):
     def __init__(self) -> None:
         super().__init__(4)
         self.section_assignments = ListConverter(SectionAssignment).convert(self.input)
@@ -16,4 +16,4 @@ class Day4(Day):
 
 
 if __name__ == '__main__':
-    Day4().lets_go()
+    Today().lets_go()
