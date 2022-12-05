@@ -1,6 +1,6 @@
-from scoring import day_2_1_scoring, day_2_2_scoring
+from day import Day
 from inputs.converter import ListConverter
-from inputs.daily_input import DailyInput
+from scoring import day_2_1_scoring, day_2_2_scoring
 
 
 class RockPaperScissors:
@@ -11,16 +11,17 @@ class RockPaperScissors:
         return fun(self.first_item, self.second_item)
 
 
-def part1(strategies: list[RockPaperScissors]) -> int:
-    return sum(strategy.score(day_2_1_scoring) for strategy in strategies)
+class Day2(Day):
+    def __init__(self) -> None:
+        super().__init__(2)
+        self.strategies = ListConverter(RockPaperScissors).convert(self.input)
 
+    def part1(self) -> int:
+        return sum(strategy.score(day_2_1_scoring) for strategy in self.strategies)
 
-def part2(strategies: list[RockPaperScissors]) -> int:
-    return sum(strategy.score(day_2_2_scoring) for strategy in strategies)
+    def part2(self) -> int:
+        return sum(strategy.score(day_2_2_scoring) for strategy in self.strategies)
 
 
 if __name__ == '__main__':
-    daily_input = DailyInput(2).get()
-    strategies = ListConverter(RockPaperScissors).convert(daily_input)
-    print(f"Part 1: {part1(strategies)}")
-    print(f"Part 2: {part2(strategies)}")
+    Day2().lets_go()

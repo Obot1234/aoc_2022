@@ -1,9 +1,6 @@
-from typing import TypeVar
-
+from day import Day
 from inputs.converter import ListConverter
-from inputs.daily_input import DailyInput
-
-T = TypeVar('T')
+from util.lists import batched
 
 
 def item_to_priority(item: str) -> int:
@@ -35,23 +32,18 @@ class Group:
         return res.pop()
 
 
-def batched(_list: list[T], n: int) -> list[list[T]]:
-    for k in range(0, len(_list), n):
-        if k + n <= len(_list):
-            yield _list[k:(k + n)]
+class Day3(Day):
+    def __init__(self) -> None:
+        super().__init__(3)
+        self.rucksacks = ListConverter(Rucksack).convert(self.input)
 
+    def part1(self) -> int:
+        return sum([item_to_priority(rucksack.get_double_item()) for rucksack in self.rucksacks])
 
-def part1(_rucksacks: list[Rucksack]) -> int:
-    return sum([item_to_priority(rucksack.get_double_item()) for rucksack in rucksacks])
-
-
-def part2(_groups: list[Group]) -> int:
-    return sum([item_to_priority(group.get_common_item()) for group in groups])
+    def part2(self) -> int:
+        groups = [Group(batch) for batch in batched(self.rucksacks, 3)]
+        return sum([item_to_priority(group.get_common_item()) for group in groups])
 
 
 if __name__ == '__main__':
-    daily_input = DailyInput(3).get()
-    rucksacks = ListConverter(Rucksack).convert(daily_input)
-    print(f"Part 1: {part1(rucksacks)}")
-    groups = [Group(batch) for batch in batched(rucksacks, 3)]
-    print(f"Part 2: {part2(groups)}")
+    Day3().lets_go()
