@@ -1,5 +1,5 @@
 from day import Day
-from .rucksack import Rucksack
+from rucksack import Rucksack
 from group import Group
 from inputs.converter import ListConverter
 from util.lists import batched
