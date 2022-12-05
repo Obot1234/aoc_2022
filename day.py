@@ -6,6 +6,7 @@ from inputs.daily_input import DailyInput
 
 class Day(ABC):
     def __init__(self, day: int):
+        self.day = day
         self.input = DailyInput(day).get()
 
     def lets_go(self) -> None:

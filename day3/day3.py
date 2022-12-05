@@ -1,4 +1,6 @@
 from day import Day
+from .rucksack import Rucksack
+from group import Group
 from inputs.converter import ListConverter
 from util.lists import batched
 
@@ -6,30 +8,6 @@ from util.lists import batched
 def item_to_priority(item: str) -> int:
     val = ord(item)
     return val - 38 if val <= ord("Z") else val - 96
-
-
-class Rucksack:
-    def __init__(self, contents: str):
-        content_split = len(contents) // 2
-        self.compartments = [contents[:content_split],
-                             contents[content_split:]]
-
-    def get_double_item(self) -> str:
-        return set(self.compartments[0]).intersection(self.compartments[1]).pop()
-
-    def contents(self) -> str:
-        return "".join(self.compartments)
-
-
-class Group:
-    def __init__(self, _rucksacks: list[Rucksack]):
-        self.rucksacks = _rucksacks
-
-    def get_common_item(self) -> str:
-        res = set(self.rucksacks[0].contents())
-        for rucksack in self.rucksacks[1:]:
-            res = res.intersection(rucksack.contents())
-        return res.pop()
 
 
 class Day3(Day):

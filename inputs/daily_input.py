@@ -29,7 +29,9 @@ class DailyInput:
             return self.__get_from_web().splitlines()
 
     def __get_from_file(self) -> str:
-        return open(self.filename, 'r').read()
+        with open(self.filename, 'r') as file:
+            res = file.read()
+        return res
 
     def __get_from_web(self) -> str:
         print("Cached file not found. Downloading input..")

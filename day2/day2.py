@@ -1,14 +1,7 @@
 from day import Day
+from rock_paper_scissors import RockPaperScissors
 from inputs.converter import ListConverter
 from scoring import day_2_1_scoring, day_2_2_scoring
-
-
-class RockPaperScissors:
-    def __init__(self, input_line: str):
-        self.first_item, self.second_item = input_line.split()
-
-    def score(self, fun) -> int:
-        return fun(self.first_item, self.second_item)
 
 
 class Day2(Day):
