@@ -1,11 +1,12 @@
 import unittest
+from typing import Any
 
 from day import Day
 
 
 class RegressionTestDays(unittest.TestCase):
 
-    def generic_test(self, day: Day, first_answer: int, second_answer: int):
+    def generic_test(self, day: Day, first_answer: Any, second_answer: Any):
         self.assertEqual(day.part1(), first_answer, f"Problem with part 1 of day {day.day}")
         self.assertEqual(day.part2(), second_answer, f"Problem with part 2 of day {day.day}")
 
@@ -24,6 +25,10 @@ class RegressionTestDays(unittest.TestCase):
     def test_day4(self) -> None:
         from day4.day4 import Today
         self.generic_test(Today(), 513, 878)
+
+    def test_day5(self) -> None:
+        from day5.day5 import Today
+        self.generic_test(Today(), "GRTSWNJHH", "QLFQDBBHM")
 
 
 if __name__ == '__main__':

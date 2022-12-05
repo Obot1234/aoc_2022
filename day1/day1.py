@@ -4,7 +4,7 @@ from day import Day
 from inputs.converter import ListOfNumbersConverter
 
 
-class Today(Day):
+class Today(Day[int]):
     def __init__(self) -> None:
         super().__init__(1)
         self.bags = ListOfNumbersConverter().convert(self.input)

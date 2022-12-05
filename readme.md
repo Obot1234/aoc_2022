@@ -47,3 +47,14 @@ Language: python
 | Part 2  |     0.36 ms |
 
 </details>
+
+<details>
+<summary>Day 5</summary>
+
+| Total   |     2.00 ms |
+|---------|------------:|
+| Parsing |     1.31 ms |
+| Part 1  |     0.36 ms |
+| Part 2  |     0.33 ms |
+
+</details>

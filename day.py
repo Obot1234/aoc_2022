@@ -1,10 +1,13 @@
 import time
 from abc import ABC, abstractmethod
+from typing import TypeVar, Generic
 
 from inputs.daily_input import DailyInput
 
+T = TypeVar('T')
 
-class Day(ABC):
+
+class Day(ABC, Generic[T]):
     def __init__(self, day: int):
         self.start = time.perf_counter()
         self.day = day
@@ -20,7 +23,7 @@ class Day(ABC):
 
     def pretty_print_execution_time(self, time_parsing, time_part_1, time_part_2) -> None:
         time_total = time_parsing + time_part_1 + time_part_2
-        print("\n" 
+        print("\n"
               "<details>\n"
               f"<summary>Day {self.day}</summary>\n"
               "\n"
@@ -33,16 +36,16 @@ class Day(ABC):
               "</details>")
 
     @staticmethod
-    def __time_part(part) -> float:
+    def __time_part(part) -> (float, T):
         start = time.perf_counter()
         ans = part()
         time_spent = time.perf_counter() - start
         return time_spent * 1000, ans  # in ms
 
     @abstractmethod
-    def part1(self) -> int:
+    def part1(self) -> T:
         pass
 
     @abstractmethod
-    def part2(self) -> int:
+    def part2(self) -> T:
         pass

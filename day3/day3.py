@@ -10,7 +10,7 @@ def item_to_priority(item: str) -> int:
     return val - 38 if val <= ord("Z") else val - 96
 
 
-class Today(Day):
+class Today(Day[int]):
     def __init__(self) -> None:
         super().__init__(3)
         self.rucksacks = ListConverter(Rucksack).convert(self.input)

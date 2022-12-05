@@ -4,7 +4,7 @@ from inputs.converter import ListConverter
 from scoring import day_2_1_scoring, day_2_2_scoring
 
 
-class Today(Day):
+class Today(Day[int]):
     def __init__(self) -> None:
         super().__init__(2)
         self.strategies = ListConverter(RockPaperScissors).convert(self.input)
