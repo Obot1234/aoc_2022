@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from collections.abc import Callable
 from typing import TypeVar, Generic
 
 T = TypeVar('T')
@@ -12,13 +13,14 @@ class Converter(ABC, Generic[T]):
 
 
 class ListConverter(Generic[V], Converter[list[V]]):
+    def __init__(self, constructor: Callable[[str], V]):
+        self.constructor = constructor
 
     def convert(self, daily_input: [str]) -> list[V]:
         return [self.convert_line(input_line) for input_line in daily_input]
 
-    @abstractmethod
-    def convert_line(self, line_input: str) -> T:
-        pass
+    def convert_line(self, line_input: str) -> V:
+        return self.constructor(line_input)
 
 
 class ListOfNumbersConverter(Converter[list[list[int]]]):
