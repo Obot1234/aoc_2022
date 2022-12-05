@@ -11,23 +11,23 @@ class RegressionTestDays(unittest.TestCase):
         self.assertEqual(day.part2(), second_answer, f"Problem with part 2 of day {day.day}")
 
     def test_day1(self) -> None:
-        from day1.day1 import Today
+        from day1.today import Today
         self.generic_test(Today(), 73211, 213958)
 
     def test_day2(self) -> None:
-        from day2.day2 import Today
+        from day2.today import Today
         self.generic_test(Today(), 10404, 10334)
 
     def test_day3(self) -> None:
-        from day3.day3 import Today
+        from day3.today import Today
         self.generic_test(Today(), 8088, 2522)
 
     def test_day4(self) -> None:
-        from day4.day4 import Today
+        from day4.today import Today
         self.generic_test(Today(), 513, 878)
 
     def test_day5(self) -> None:
-        from day5.day5 import Today
+        from day5.today import Today
         self.generic_test(Today(), "GRTSWNJHH", "QLFQDBBHM")
 
 
