@@ -1,5 +1,3 @@
-import time
-
 from day import Day
 from inputs.converter import ListOfNumbersConverter
 
