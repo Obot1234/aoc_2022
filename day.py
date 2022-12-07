@@ -23,17 +23,8 @@ class Day(ABC, Generic[T]):
 
     def pretty_print_execution_time(self, time_parsing, time_part_1, time_part_2) -> None:
         time_total = time_parsing + time_part_1 + time_part_2
-        print("\n"
-              "<details>\n"
-              f"<summary>Day {self.day}</summary>\n"
-              "\n"
-              f"| Total   | {time_total:8.2f} ms |\n"
-              "|---------|------------:|\n"
-              f"| Parsing | {time_parsing:8.2f} ms |\n"
-              f"| Part 1  | {time_part_1:8.2f} ms |\n"
-              f"| Part 2  | {time_part_2:8.2f} ms |\n"
-              "\n"
-              "</details>")
+        print(f"| {self.day:3} | {time_total:8.2f} ms | {time_parsing:8.2f} ms | "
+              f"{time_part_1:8.2f} ms |  {time_part_1:8.2f} ms |")
 
     @staticmethod
     def __time_part(part) -> (float, T):
