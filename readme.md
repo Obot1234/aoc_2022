@@ -69,3 +69,14 @@ Language: python
 | Part 2  |     3.19 ms |
 
 </details>
+
+<details>
+<summary>Day 7</summary>
+
+| Total   |     2.28 ms |
+|---------|------------:|
+| Parsing |     1.87 ms |
+| Part 1  |     0.28 ms |
+| Part 2  |     0.13 ms |
+
+</details>
