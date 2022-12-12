@@ -16,5 +16,7 @@ class Rope:
     def move_tail(self) -> None:
         for k in range(1, len(self.components)):
             distance = self.components[k - 1] - self.components[k]
-            if np.any(np.abs(distance) > 1):
+            if -1 <= distance[0] <= 1 and -1 <= distance[1] <= 1:
+                return
+            else:
                 self.components[k] += np.sign(distance)
