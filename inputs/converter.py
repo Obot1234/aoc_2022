@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from collections.abc import Callable
 from typing import TypeVar, Generic, Union
-
+import numpy as np
 from inputs.parseable import Parseable
 
 T = TypeVar('T')
@@ -54,3 +54,8 @@ class InputSplitter(Converter[list[list[str]]]):
                 small_list.append(val)
         big_list.append(small_list)
         return big_list
+
+
+class NumpyConverter(Converter[np.ndarray]):
+    def convert(self, daily_input: [str]) -> np.ndarray:
+        return np.array([list(line) for line in daily_input]).astype(int)
