@@ -15,9 +15,9 @@ class DailyInput:
     session_cookie_path = aoc_path.parent / "session_cookie.json"
     cache_path = aoc_path / "cache"
 
-    def __init__(self, day: int):
+    def __init__(self, day: int, test=False):
         self.day = day
-        self.filename = self.cache_path / f"day{day}.txt"
+        self.filename = self.cache_path / (f"day{day}_test.txt" if test else f"day{day}.txt")
 
     def convert(self, converter: Converter[T]) -> T:
         return converter.convert(self.get())

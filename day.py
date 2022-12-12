@@ -8,10 +8,10 @@ T = TypeVar('T')
 
 
 class Day(ABC, Generic[T]):
-    def __init__(self, day: int):
+    def __init__(self, day: int, test=False):
         self.start = time.perf_counter()
         self.day = day
-        self.input = DailyInput(day).get()
+        self.input = DailyInput(day, test).get()
 
     def lets_go(self) -> None:
         time_parsing = (time.perf_counter() - self.start) * 1000
