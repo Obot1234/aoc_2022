@@ -42,6 +42,10 @@ class RegressionTestDays(unittest.TestCase):
         from day8.today import Today
         self.generic_test(Today(), 1794, 199272)
 
+    def test_day9(self) -> None:
+        from day9.today import Today
+        self.generic_test(Today(), 6197, 2562)
+
 
 if __name__ == '__main__':
     unittest.main()
