@@ -19,10 +19,10 @@ class Monkey:
             new_items = [self.operation(item) // 3 for item in self.items]
         else:
             new_items = [self.operation(item) % 223092870 for item in self.items]
-        self.items = []
+        self.items.clear()
         trues, falses = [], []
         for item in new_items:
-            (falses, trues)[item % self.divisible_by == 0].append(item)
+            trues.append(item) if item % self.divisible_by == 0 else falses.append(item)
         self.monkey_true.extend(trues)
         self.monkey_false.extend(falses)
 
