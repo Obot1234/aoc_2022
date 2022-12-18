@@ -8,7 +8,7 @@ class MapGraph:
     def __init__(self, node_map: list[list[MountainCoord]]) -> None:
         self.node_map = node_map
 
-    def reset_map(self):
+    def reset_map(self) -> None:
         for node_row in self.node_map:
             for node in node_row:
                 node.road_to_start = None
@@ -20,10 +20,11 @@ class MapGraph:
         nodes_to_visit: list[(int, MountainCoord)] = []
         k = 0
         start.distance_from_start = 0
+        current_node = start
         heappush(nodes_to_visit, (0, k, start))
         while len(nodes_to_visit) > 0:
             _, _, current_node = heappop(nodes_to_visit)
-            #print(f"Current node: {current_node}, {len(nodes_to_visit)}")
+
             if self.should_end(current_node, end):
                 break
             visited_nodes.add(current_node)
